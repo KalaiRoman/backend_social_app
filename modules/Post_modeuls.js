@@ -12,6 +12,22 @@ export const Post_shema = new mongoose.Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'auth'
+    },
+    likes: {
+        type: Array,
+        default: []
+    },
+    postcommands: {
+        type: [{
+            desc: {
+                type: String,
+            },
+            user: {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'auth'
+            },
+        }],
+        default: []
     }
 },
     {
