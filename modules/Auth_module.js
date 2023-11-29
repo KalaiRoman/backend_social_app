@@ -24,7 +24,9 @@ const Auth = new mongoose.Schema({
     },
     profileimage: {
         type: String,
-
+    },
+    bannerimage:{
+        type:String,
     },
     followers: {
         type: Array,

@@ -5,6 +5,7 @@ import morgan from "morgan";
 import express from 'express';
 import ConnectDb from "./middleware/Dbconnct.js";
 import authrouter from "./routers/Auth.js";
+import postrouter from "./routers/Post.js";
 
 dotenv.config();
 
@@ -23,6 +24,12 @@ app.use(morgan("common"));
 // apis
 
 app.use("/auth", authrouter)
+
+// post
+
+app.use("/post", postrouter)
+
+
 
 // listing db
 
