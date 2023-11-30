@@ -10,7 +10,7 @@ const authrouter = express.Router();
 // register user
 
 authrouter.post("/register", async (req, res, next) => {
-    const { username, email, password, profileimage, followers, following ,bannerimage} = req.body;
+    const { username, email, password, profileimage, followers, following, bannerimage } = req.body;
     try {
 
         const Existuseremail = await Auth_module.findOne({ email })
@@ -23,7 +23,7 @@ authrouter.post("/register", async (req, res, next) => {
             const hashed = await bcrypt.genSalt(10);
             const changeHashed = await bcrypt.hashSync(password, hashed);
             const registeruser = new Auth_module({
-                username, email, password: changeHashed, profileimage, followers, following,bannerimage
+                username, email, password: changeHashed, profileimage, followers, following, bannerimage
             })
             await registeruser.save();
             res.status(201).json({
@@ -86,7 +86,7 @@ authrouter.post("/login", async (req, res, next) => {
                 })
             }
             else {
-                return res.status(404).json({message:"Wrong Password"})
+                return res.status(404).json({ message: "Wrong Password" })
             }
         }
         else {
@@ -156,6 +156,9 @@ authrouter.get("/getuser/:id", verifyToken, async (req, res, next) => {
         res.status(404).json(error);
     }
 })
+
+// all users
+
 
 
 
